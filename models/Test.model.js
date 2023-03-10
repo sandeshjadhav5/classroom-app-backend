@@ -13,4 +13,3 @@ const TestModel = mongoose.model("test", testSchema);
 module.exports = {
   TestModel,
 };
-//{"name":"DSA","section":"one","subject":"Algorithms","room":410200}
