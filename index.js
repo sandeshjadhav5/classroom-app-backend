@@ -15,7 +15,7 @@ app.use(
   })
 );
 app.get("/", (req, res) => {
-  res.send("Welcome");
+  res.send("Welcome to Testroom App");
 });
 
 app.use("/users", userRouter);
