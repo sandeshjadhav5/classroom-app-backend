@@ -23,6 +23,7 @@ userRouter.post("/register", async (req, res) => {
           age,
         });
         await user.save();
+        res.header("access-control-allow-origin", "*");
         res.send("User Registered");
       }
     });
@@ -46,6 +47,7 @@ userRouter.post("/login", async (req, res) => {
           const token = jwt.sign({ userID: user[0]._id }, process.env.key, {
             expiresIn: "1d",
           });
+          res.header("access-control-allow-origin", "*");
           res.send({ msg: "Login Successful", token: token });
         } else {
           res.send("Wrong Credentials");
