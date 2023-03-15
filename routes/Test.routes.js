@@ -13,6 +13,17 @@ testsRouter.get("/", async (req, res) => {
   }
 });
 
+//S I N G L E   T E S T
+testsRouter.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const test = await TestModel.findOne({ _id: id });
+    console.log(test);
+    res.send(test);
+  } catch (err) {
+    console.log(err);
+  }
+});
 // P O S T
 testsRouter.post("/create", async (req, res) => {
   const payload = req.body;
