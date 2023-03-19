@@ -1,7 +1,20 @@
 const express = require("express");
 const { TestModel } = require("../models/Test.model");
 
+const multer = require("multer");
 const testsRouter = express.Router();
+
+//S T O R A G E
+const Storage = multer.diskStorage({
+  destination: "uploads",
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({
+  storage: Storage,
+}).single("testImage");
 
 // G E T
 testsRouter.get("/", async (req, res) => {
