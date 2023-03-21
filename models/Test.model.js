@@ -5,16 +5,7 @@ const testSchema = mongoose.Schema({
   section: String,
   subject: String,
   room: Number,
-  notes: [
-    {
-      title: String,
-      date: Date,
-      image: {
-        data: Buffer,
-        contentType: String,
-      },
-    },
-  ],
+  notes: [{ title: String, image: String }],
   userID: String,
 });
 
