@@ -1,5 +1,6 @@
 const express = require("express");
 const { TestModel } = require("../models/Test.model");
+const { noteData } = require("../controllers/Note.controller");
 
 const multer = require("multer");
 const testsRouter = express.Router();
@@ -58,6 +59,9 @@ testsRouter.patch("/update/:id", async (req, res) => {
     res.send({ msg: "Something Went Wrong" });
   }
 });
+
+//add note
+testsRouter.put("/:id/addnote", noteData);
 
 //D E L E T E
 testsRouter.delete("/delete/:id", async (req, res) => {
