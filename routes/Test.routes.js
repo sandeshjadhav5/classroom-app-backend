@@ -61,7 +61,24 @@ testsRouter.patch("/update/:id", async (req, res) => {
 });
 
 //add note
-testsRouter.put("/:id/addnote", noteData);
+testsRouter.patch("/:id/addnote", async (req, res) => {
+  let id = req.params.id;
+  let data = req.body;
+  try {
+    const note = await TestModel.findById(id);
+    console.log("note is =>", note);
+    if (note) {
+      await note.updateOne({ $push: { notes: data } });
+      let findAllNotes = await TestModel.findOne({ _id: id });
+      res.send({ msg: "added note" });
+      console.log("note-added");
+    } else {
+      res.send("Test Not Found");
+    }
+  } catch (err) {
+    res.send(err);
+  }
+});
 
 //D E L E T E
 testsRouter.delete("/delete/:id", async (req, res) => {

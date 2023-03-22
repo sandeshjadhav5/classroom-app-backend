@@ -5,7 +5,7 @@ const testSchema = mongoose.Schema({
   section: String,
   subject: String,
   room: Number,
-  notes: [{ title: String, image: String }],
+  notes: { type: Array, default: [] },
   userID: String,
 });
 

@@ -5,10 +5,11 @@ const noteData = async (req, res) => {
   let data = req.body;
   try {
     const note = await TestModel.findById(id);
+    console.log("note is =>", note);
     if (note) {
       await note.updateOne({ $push: { notes: data } });
       let findAllNotes = await TestModel.findOne({ _id: id });
-      res.send({ message: "Note Added", notes: findAllNotes });
+      res.send("added note");
       console.log("note-added");
     } else {
       res.send("Test Not Found");
@@ -17,6 +18,7 @@ const noteData = async (req, res) => {
     res.send(err);
   }
 };
+
 module.exports = {
   noteData,
 };
