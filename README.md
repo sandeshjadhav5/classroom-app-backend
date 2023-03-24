@@ -1,2 +1,2 @@
 <h2 align="center">Classroom App - Backend</h2>
-<h4>Render Deployed Link : <a href="https://classroom-app-backend.onrender.com/">https://classroom-app-backend.onrender.com/</a></h4>
+<h4>Deployed Link : <a href="https://odd-tan-mackerel-wig.cyclic.app">https://odd-tan-mackerel-wig.cyclic.app</a></h4>
