@@ -1,11 +1,25 @@
 const express = require("express");
 const { TestModel } = require("../models/Test.model");
 const { noteData } = require("../controllers/Note.controller");
-
 const multer = require("multer");
+
 const testsRouter = express.Router();
 
-// G E T
+const storage = multer.memoryStorage();
+//multer
+// const storage = multer.diskStorage({
+//   destination: (req, file, callback) => {
+//     callback(null, "./uploads");
+//   },
+//   filename: (req, file, callback) => {
+//     console.log("file in multer", file.buffer);
+//     callback(null, file.originalname);
+//   },
+// });
+
+const upload = multer({ storage: storage });
+
+// G E T   R E Q U E S T
 testsRouter.get("/", async (req, res) => {
   try {
     const tests = await TestModel.find();
@@ -60,23 +74,39 @@ testsRouter.patch("/update/:id", async (req, res) => {
   }
 });
 
-//add note
-testsRouter.patch("/:id/addnote", async (req, res) => {
+//P A T C H //  A D D I N G   F I L E S
+
+testsRouter.patch("/:id/addnote", upload.single("file"), async (req, res) => {
   let id = req.params.id;
-  let data = req.body;
-  try {
-    const note = await TestModel.findById(id);
-    console.log("note is =>", note);
-    if (note) {
-      await note.updateOne({ $push: { notes: data } });
-      let findAllNotes = await TestModel.findOne({ _id: id });
-      res.send({ msg: "added note" });
-      console.log("note-added");
-    } else {
-      res.send("Test Not Found");
+
+  let { name, description } = req.body;
+  console.log("name", name, "desc", description);
+  console.log("reqFile", req.file);
+  if (req.file) {
+    const newFile = {
+      name,
+      description,
+      file: req.file.buffer.toString("base64"),
+    };
+    console.log("newFile", newFile);
+
+    try {
+      const note = await TestModel.findById(id);
+      console.log("note is =>", newFile);
+      if (note) {
+        note.notes.push(newFile); // push the newFile object into the notes array
+        await note.save(); // save the note
+        let findAllNotes = await TestModel.findOne({ _id: id });
+        res.send({ msg: "added file" });
+        console.log("note-added");
+      } else {
+        res.send("Class Not Found");
+      }
+    } catch (err) {
+      res.send(err);
     }
-  } catch (err) {
-    res.send(err);
+  } else {
+    console.log(req.body);
   }
 });
 
