@@ -7,17 +7,6 @@ const testsRouter = express.Router();
 
 const storage = multer.memoryStorage();
 
-//multer
-// const storage = multer.diskStorage({
-//   destination: (req, file, callback) => {
-//     callback(null, "./uploads");
-//   },
-//   filename: (req, file, callback) => {
-//     console.log("file in multer", file.buffer);
-//     callback(null, file.originalname);
-//   },
-// });
-
 const upload = multer({ storage: storage });
 
 // G E T   R E Q U E S T
