@@ -6,6 +6,7 @@ const multer = require("multer");
 const testsRouter = express.Router();
 
 const storage = multer.memoryStorage();
+
 //multer
 // const storage = multer.diskStorage({
 //   destination: (req, file, callback) => {
@@ -74,7 +75,7 @@ testsRouter.patch("/update/:id", async (req, res) => {
   }
 });
 
-//P A T C H //  A D D I N G   F I L E S
+//P A T C H //  A D D I N G   F I L E S  TO  D B
 
 testsRouter.patch("/:id/addnote", upload.single("file"), async (req, res) => {
   let id = req.params.id;
