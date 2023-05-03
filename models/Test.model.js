@@ -4,7 +4,6 @@ const testSchema = mongoose.Schema({
   name: String,
   section: String,
   subject: String,
-  excelFile: String,
   notes: [
     {
       name: {
@@ -19,6 +18,7 @@ const testSchema = mongoose.Schema({
         type: String,
         required: true,
       },
+      excelFile: String,
     },
   ],
   userID: String,
