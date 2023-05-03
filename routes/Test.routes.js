@@ -10,11 +10,11 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 // G E T   R E Q U E S T
-testsRouter.get("/:userId", async (req, res) => {
-  const userId = req.params.userId;
+testsRouter.get("/:userID", async (req, res) => {
+  const userID = req.params.userID;
 
   try {
-    const tests = await TestModel.find({ user: userId });
+    const tests = await TestModel.find({ user: userID });
     res.send(tests);
   } catch (err) {
     console.log(err);
