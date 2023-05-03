@@ -4,7 +4,7 @@ const testSchema = mongoose.Schema({
   name: String,
   section: String,
   subject: String,
-  room: Number,
+  excelFile: String,
   notes: [
     {
       name: {
