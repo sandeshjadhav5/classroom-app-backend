@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRouter);
-app.use(authenticate);
+app.use("/tests", authenticate);
 app.use("/tests", testsRouter);
 app.use("/notes", fileRouter);
 

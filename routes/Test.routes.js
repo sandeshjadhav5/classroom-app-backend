@@ -11,12 +11,8 @@ const upload = multer({ storage: storage });
 
 // G E T   R E Q U E S T
 testsRouter.get("/", async (req, res) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const decoded = jwt.verify(token, "classroom");
-  const userId = decoded.userID;
-
   try {
-    const tests = await TestModel.find({ user: userId });
+    const tests = await TestModel.find(req.body);
     res.send(tests);
   } catch (err) {
     console.log(err);
