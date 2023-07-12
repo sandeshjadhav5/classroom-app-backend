@@ -11,8 +11,10 @@ const upload = multer({ storage: storage });
 
 // G E T   R E Q U E S T
 testsRouter.get("/", async (req, res) => {
+  console.log("inside get req");
   try {
-    const tests = await TestModel.find(req.body);
+    const tests = await TestModel.find();
+    console.log(tests);
     res.send(tests);
   } catch (err) {
     console.log(err);
