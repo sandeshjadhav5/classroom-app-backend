@@ -29,8 +29,3 @@ const TestModel = mongoose.model("test", testSchema);
 module.exports = {
   TestModel,
 };
-
-// "name": "First Year",
-// "section": "Graphics",
-// "subject": "Computer Graphics",
-// "room": 123654,
