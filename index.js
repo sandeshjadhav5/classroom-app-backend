@@ -22,9 +22,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRouter);
-
+app.use(authenticate);
 app.use("/tests", testsRouter);
-//app.use(authenticate);
 app.use("/notes", fileRouter);
 
 app.listen(process.env.port, async () => {
