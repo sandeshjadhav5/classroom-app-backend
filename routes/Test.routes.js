@@ -27,7 +27,7 @@ testsRouter.get("/:id", async (req, res) => {
   try {
     const test = await TestModel.findOne({ _id: id });
     console.log(test);
-    res.send(test);
+    res.status(200).send(test);
   } catch (err) {
     console.log(err);
   }
