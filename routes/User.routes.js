@@ -43,9 +43,13 @@ userRouter.post("/login", async (req, res) => {
       const hashedPassword = user[0].password;
       bcrypt.compare(password, hashedPassword, (err, result) => {
         if (result) {
-          const token = jwt.sign({ userID: user[0]._id }, process.env.key, {
-            expiresIn: "1d",
-          });
+          const token = jwt.sign(
+            { userID: user[0]._id },
+            process.env.JWT_SECRET,
+            {
+              expiresIn: "1d",
+            }
+          );
           res.setHeader("Access-Control-Allow-Origin", "*");
           res.send({ msg: "Login Successful", token: token });
         } else {
