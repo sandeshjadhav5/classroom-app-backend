@@ -18,7 +18,6 @@ const testSchema = mongoose.Schema({
         type: String,
         required: true,
       },
-      excelFile: String,
     },
   ],
   userID: String,

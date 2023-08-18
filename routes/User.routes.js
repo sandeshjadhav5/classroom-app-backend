@@ -19,7 +19,7 @@ userRouter.post("/register", async (req, res) => {
         const user = new UserModel({
           name,
           email,
-          password: hashed_password
+          password: hashed_password,
         });
         await user.save();
         res.setHeader("Access-Control-Allow-Origin", "*");
