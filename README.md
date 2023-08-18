@@ -4,5 +4,5 @@
 <h2>API's</h2>
 <p>Base URL :- "https://odd-tan-mackerel-wig.cyclic.app"</p>
 <p>POST (Register User) :- https://odd-tan-mackerel-wig.cyclic.app/users/register</p>
-<p>POST (Login User) :- https://odd-tan-mackerel-wig.cyclic.app/users/login</p>
+
 
