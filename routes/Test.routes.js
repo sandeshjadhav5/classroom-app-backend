@@ -14,7 +14,7 @@ testsRouter.get("/alltests", async (req, res) => {
   console.log("inside get req");
   try {
     const tests = await TestModel.find();
-    console.log(tests);
+    //console.log(tests);
     res.status(200).send(tests);
   } catch (err) {
     console.log(err);
